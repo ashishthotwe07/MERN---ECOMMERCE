@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import db from "./config/db.js";
+import userRouter from "./routes/auth.routes.js";
 
 dotenv.config();
 
@@ -15,6 +16,10 @@ const app = express();
 //  middlewares
 app.use(express.json());
 app.use(morgan("dev"));
+
+
+// Use Auth routes
+app.use("/api/auth", userRouter);
 
 // Define a route
 app.get("/", (req, res) => {
