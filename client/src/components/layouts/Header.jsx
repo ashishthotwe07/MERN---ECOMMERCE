@@ -25,7 +25,6 @@ export default function Header() {
         <ul className="flex gap-1 sm:gap-4 items-center text-xs sm:text-base uppercase">
           <li>
             <NavLink
-              exact
               style={({ isActive }) => ({
                 borderBottom: isActive ? "#15b0ab solid 2px" : "",
               })}

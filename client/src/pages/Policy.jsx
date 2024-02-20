@@ -3,7 +3,7 @@ import Layout from '../components/layouts/Layout';
 
 export default function Policy() {
   return (
-    <Layout>
+    <Layout title={"Privacy Policy - Shopify"}>
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-semibold mb-8 text-center">Privacy Policy</h2>
         {/* Introduction Section */}

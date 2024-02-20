@@ -9,7 +9,7 @@ import {
 
 export default function Contact() {
   return (
-    <Layout>
+    <Layout title={"Contact - Shopify"}>
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-semibold mb-8 text-center">
           Get in Touch

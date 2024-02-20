@@ -3,7 +3,7 @@ import Layout from "../components/layouts/Layout";
 
 export default function About() {
   return (
-    <Layout>
+    <Layout title={"About - Shopify"}>
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-semibold mb-8 text-center">About Us</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
