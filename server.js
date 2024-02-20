@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import db from "./config/db.js";
 import userRouter from "./routes/auth.routes.js";
+import cors from 'cors'
 
 dotenv.config();
 
@@ -14,8 +15,10 @@ db();
 const app = express();
 
 //  middlewares
+app.use(cors())
 app.use(express.json());
 app.use(morgan("dev"));
+
 
 
 // Use Auth routes
