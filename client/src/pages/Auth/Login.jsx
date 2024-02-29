@@ -1,15 +1,33 @@
 import React, { useState } from "react";
 import Layout from "../../components/layouts/Layout";
+import { signIn } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(signIn(formData))
+      .unwrap()
+      .then(() => {
+        toast.success("User Logged in  Successfully");
+        navigate("/home");
+      })
+      .catch((e) => {
+        if (e.response && e.response.data && e.response.data.message) {
+          toast.error(e.response.data.message);
+        } else {
+          toast.error(e);
+        }
+      });
   };
 
   return (

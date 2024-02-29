@@ -39,7 +39,7 @@ export default function Header() {
               style={({ isActive }) => ({
                 borderBottom: isActive ? "#15b0ab solid 2px" : "",
               })}
-              exact
+              exact="true"
               to="/category"
               className="text-white uppercase hover:text-blue-500 flex items-center"
             >

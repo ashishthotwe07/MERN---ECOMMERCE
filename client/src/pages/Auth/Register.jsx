@@ -1,15 +1,39 @@
 import React, { useState } from "react";
 import Layout from "../../components/layouts/Layout";
+import { useDispatch, useSelector } from "react-redux";
+import { authSelector, signUp } from "../../redux/authSlice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {error } = useSelector(authSelector);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(signUp(formData))
+      .unwrap()
+      .then(() => {
+        toast.success("User Registered Successfully");
+        navigate("/login");
+      })
+      .catch((e) => {
+        if (
+          e.response &&
+          e.response.data &&
+          error.response.data.message
+        ) {
+          toast.error(e.response.data.message);
+        } else {
+          toast.error(error);
+        }
+      });
   };
 
   return (
